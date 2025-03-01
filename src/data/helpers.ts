@@ -11,4 +11,7 @@ const createRowData = ({currency, nameI18N, exchangeRate}: Currency) => ({
   exchange: exchangeRate?.buy
 });
 
-export {createRowData, filterMatches};
+const findCurrencies = (data: Currency[], searchTerm: string) =>
+  data.filter(filterMatches(searchTerm)).map(createRowData);
+
+export {createRowData, filterMatches, findCurrencies};

@@ -2,9 +2,9 @@ import type {Currency} from "./types";
 
 import {describe, it, expect} from "vitest";
 
-import {createRowData, filterMatches} from "./helpers";
+import {createRowData, filterMatches, findCurrencies} from "./helpers";
 
-const currency: Currency = {
+const currencyMock: Currency = {
   currency: "EUR",
   precision: 2,
   nameI18N: "Euro",
@@ -26,19 +26,31 @@ const currency: Currency = {
   flags: ["provided", "tradingProhibited"]
 };
 
+const rowDataMock = {
+  currency: currencyMock.currency,
+  countryName: currencyMock.nameI18N,
+  exchange: currencyMock.exchangeRate?.buy
+};
+
 describe("createRowData", () => {
   it("transforms currency payload", () => {
-    expect(createRowData(currency)).toEqual({
-      currency: currency.currency,
-      countryName: currency.nameI18N,
-      exchange: currency.exchangeRate?.buy
-    });
+    expect(createRowData(currencyMock)).toEqual(rowDataMock);
   });
 });
 
 describe("filterMatches", () => {
   it("filters out unknown searchterm", () => {
-    expect(filterMatches("EUR")(currency)).toBe(true);
-    expect(filterMatches("USD")(currency)).toBe(false);
+    expect(filterMatches("EUR")(currencyMock)).toBe(true);
+    expect(filterMatches("USD")(currencyMock)).toBe(false);
+  });
+});
+
+describe("findCurrencies", () => {
+  it("finds currencies for the given currency", () => {
+    expect(findCurrencies([currencyMock], "EUR")).toEqual([rowDataMock]);
+  });
+
+  it("returns an empty result for the given currency", () => {
+    expect(findCurrencies([currencyMock], "USD")).toEqual([]);
   });
 });
