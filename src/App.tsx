@@ -1,34 +1,42 @@
 import type {FC} from "react";
 import type {Props as CurrencyProps} from "./CurrencyRow";
 import type {Currency} from "./data/types";
-import type {Router} from "./router";
 
-import {useState, useCallback} from "react";
+import {useState, useCallback, useEffect} from "react";
 import {Header} from "./Header";
 import {Search} from "./Search";
 import {CurrenciesTable} from "./CurrenciesTable";
-import {createRowData, filterMatches} from "./data/helpers";
+import {findCurrencies} from "./data/helpers";
 import {useDebounce} from "./hooks/debounce";
 
 import "./App.css";
 
 type Props = {
   data: Currency[];
-  router: Router;
   searchKey: string;
+  url: URL;
+  history: History;
 };
 
-const App: FC<Props> = ({data, router, searchKey}) => {
+const App: FC<Props> = ({data, history, searchKey, url}) => {
+  const searchTerm = url.searchParams.get(searchKey);
   const [findings, setFindings] = useState<CurrencyProps[]>([]);
   const debouncer = useDebounce<string>((searchTerm) => {
-    const url = new URL(location.href);
     url.searchParams.set(searchKey, searchTerm);
-    router.pushUrl(url, {});
+    history.pushState({}, "", url);
   }, 250);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      return;
+    }
+    const results = findCurrencies(data, searchTerm);
+    setFindings(results);
+  }, [data, searchTerm]);
 
   const onInput = useCallback(
     (searchTerm: string) => {
-      const results = data.filter(filterMatches(searchTerm)).map(createRowData);
+      const results = findCurrencies(data, searchTerm);
       setFindings(results);
       if (results.length > 0) {
         debouncer(searchTerm);
