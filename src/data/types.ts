@@ -11,7 +11,8 @@ type Currency = {
   precision: number;
   nameI18N?: string;
   exchangeRate?: Rate;
-  bankNoteRate?: Rate;
+  banknoteRate?: Rate;
+  denominations?: number[];
   flags?: string[];
 };
 
