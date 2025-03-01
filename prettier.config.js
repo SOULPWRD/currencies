@@ -1,6 +1,4 @@
-import type {Config} from "prettier";
-
-const config: Config = {
+const config = {
   bracketSpacing: false,
   tabWidth: 2,
   singleQuote: false,
