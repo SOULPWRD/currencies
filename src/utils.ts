@@ -1,12 +1,12 @@
-type Config = {
+type DebounceConfig = {
   setTimeout: (callback: () => void, miliseconds: number) => number;
   clearTimeout: (timerId: number) => void;
 };
 
 function debounce<T>(
   callback: (data: T) => void,
-  miliseconds = 500,
-  {clearTimeout = window.clearTimeout, setTimeout = window.setTimeout}: Config
+  miliseconds: number,
+  {clearTimeout, setTimeout}: DebounceConfig
 ) {
   let timerId: number | undefined;
 
