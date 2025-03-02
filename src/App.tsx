@@ -47,7 +47,7 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
 
   return (
     <>
-      <Header title="Currencies"></Header>
+      <Header title="Goerge FE Test"></Header>
       <Search onInput={onInput}></Search>
       {findings.length ? <CurrenciesList currencies={findings} /> : null}
     </>
