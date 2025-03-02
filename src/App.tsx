@@ -5,7 +5,7 @@ import type {Currency} from "./data/types";
 import {useState, useCallback, useEffect} from "react";
 import {Header} from "./Header";
 import {Search} from "./Search";
-import {CurrenciesTable} from "./CurrenciesTable";
+import {CurrenciesList} from "./CurrenciesList";
 import {findCurrencies} from "./data/helpers";
 import {useDebounce} from "./hooks/debounce";
 
@@ -49,7 +49,7 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
     <>
       <Header title="Currencies"></Header>
       <Search onInput={onInput}></Search>
-      {findings.length ? <CurrenciesTable currencies={findings} /> : null}
+      {findings.length ? <CurrenciesList currencies={findings} /> : null}
     </>
   );
 };

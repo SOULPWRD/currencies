@@ -1,19 +1,17 @@
 import type {FC} from "react";
 
 type Props = {
-  countryName?: string;
   currency: string;
   exchange?: number;
 };
 
-const CurrencyRow: FC<Props> = ({currency, countryName, exchange}) => {
+const CurrencyRow: FC<Props> = ({currency, exchange}) => {
   return (
-    <tr>
-      <td>Flag</td>
-      <td>{currency}</td>
-      <td>{countryName}</td>
-      <td>{exchange}</td>
-    </tr>
+    <li>
+      <img src="/flags/ad.png"></img>
+      <p>{currency}</p>
+      <p>{exchange}</p>
+    </li>
   );
 };
 
