@@ -8,7 +8,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App
       data={data["fx"]}
-      searchKey="currency"
+      searchKey="search"
       url={new URL(location.href)}
       history={history}
     />

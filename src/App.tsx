@@ -21,7 +21,7 @@ type Props = {
 const App: FC<Props> = ({data, history, searchKey, url}) => {
   const searchTerm = url.searchParams.get(searchKey);
   const [findings, setFindings] = useState<CurrencyProps[]>([]);
-  const debouncer = useDebounce<string>((searchTerm) => {
+  const debounce = useDebounce<string>((searchTerm) => {
     url.searchParams.set(searchKey, searchTerm);
     history.pushState({}, "", url);
   }, 250);
@@ -39,10 +39,10 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
       const results = findCurrencies(data, searchTerm);
       setFindings(results);
       if (results.length > 0) {
-        debouncer(searchTerm);
+        debounce(searchTerm);
       }
     },
-    [data, debouncer]
+    [data, debounce]
   );
 
   return (
