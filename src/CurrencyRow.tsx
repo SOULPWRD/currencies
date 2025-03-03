@@ -1,16 +1,25 @@
 import type {FC} from "react";
+import type {Rate} from "./data/types";
 
 type Props = {
+  exchangeRate?: Rate;
+  countryCode: string;
+  countryName: string;
   currency: string;
-  exchange?: number;
 };
 
-const CurrencyRow: FC<Props> = ({currency, exchange}) => {
+const CurrencyRow: FC<Props> = ({
+  currency,
+  exchangeRate,
+  countryCode,
+  countryName
+}) => {
   return (
     <li>
-      <img src="/flags/ad.png"></img>
+      <img src={`/flags/${countryCode.toLowerCase()}.png`}></img>
       <p>{currency}</p>
-      <p>{exchange}</p>
+      <p>{countryName}</p>
+      <p>{exchangeRate?.buy}</p>
     </li>
   );
 };
