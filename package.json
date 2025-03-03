@@ -12,6 +12,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "countries-list": "^3.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
