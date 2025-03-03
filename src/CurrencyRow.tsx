@@ -15,10 +15,10 @@ const CurrencyRow: FC<Props> = ({
   countryName
 }) => {
   return (
-    <li>
+    <li className="row">
       <img src={`/flags/${countryCode.toLowerCase()}.png`}></img>
-      <p>{currency}</p>
       <p>{countryName}</p>
+      <p>{currency}</p>
       <p>{exchangeRate?.buy}</p>
     </li>
   );

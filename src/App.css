@@ -21,3 +21,23 @@
   border: 1px solid black;
   height: 1.5em;
 }
+
+img {
+  width: 4em;
+  height: 3em;
+}
+
+.results {
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 0.2fr 0.5fr 0.5fr 1fr;
+  width: 100%; /* Ensure the li takes full available width */
+  align-items: start;
+}
+
+.row > p:last-of-type {
+  margin-left: auto;
+}

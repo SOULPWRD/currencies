@@ -8,7 +8,7 @@ type Props = {
 
 const CurrenciesList: FC<Props> = ({currencies}) => {
   return (
-    <ul>
+    <ul className="results">
       {currencies.map((currency) => (
         <CurrencyRow key={currency.countryName} {...currency} />
       ))}
