@@ -21,7 +21,12 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
   const searchTerm = url.searchParams.get(searchKey)?.toUpperCase();
   const [findings, setFindings] = useState<CurrencyProps[]>();
   const debounce = useDebounce<string>((searchTerm) => {
-    url.searchParams.set(searchKey, searchTerm);
+    const results = data[searchTerm.toUpperCase()];
+    setFindings(results);
+    if (!results) {
+      return;
+    }
+    url.searchParams.set(searchKey, searchTerm.toUpperCase());
     history.pushState({}, "", url);
   }, 250);
 
@@ -35,13 +40,9 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
 
   const onInput = useCallback(
     (searchTerm: string) => {
-      const results = data[searchTerm];
-      setFindings(results);
-      if (results.length > 0) {
-        debounce(searchTerm.toUpperCase());
-      }
+      debounce(searchTerm);
     },
-    [data, debounce]
+    [debounce]
   );
 
   return (
