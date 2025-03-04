@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/react";
-import {mockData} from "./stories/mocks";
+import {dataMock} from "./mocks";
 
 import {CurrenciesList} from "./CurrenciesList";
 
@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    currencies: mockData["EUR"]
+    currencies: dataMock["EUR"]
   }
 };
