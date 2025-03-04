@@ -13,6 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    id: "1",
     countryCode: "sk",
     countryName: "Slovakia",
     currency: "EUR",
@@ -27,6 +28,7 @@ export const Primary: Story = {
 
 export const NA: Story = {
   args: {
+    id: "1",
     countryName: "Slovakia",
     currency: "EUR"
   }
