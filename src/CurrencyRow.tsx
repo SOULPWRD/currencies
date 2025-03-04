@@ -8,20 +8,22 @@ type Props = {
   countryCode?: string;
   countryName?: string;
   currency?: string;
+  precision?: number;
 };
 
 const CurrencyRow: FC<Props> = ({
   currency,
   exchangeRate,
   countryCode,
-  countryName
+  countryName,
+  precision
 }) => {
   return (
     <li className="row">
       <img src={`/flags/${countryCode?.toLowerCase()}.png`}></img>
       <p>{countryName || NA}</p>
       <p>{currency?.toUpperCase() || NA}</p>
-      <p>{exchangeRate?.buy || NA}</p>
+      <p>{exchangeRate?.buy ? exchangeRate.buy.toFixed(precision) : NA}</p>
     </li>
   );
 };

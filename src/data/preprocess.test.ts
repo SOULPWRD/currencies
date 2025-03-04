@@ -10,10 +10,12 @@ describe("preprocessCurrency", () => {
     expect(preprocessCurrency(currenciesMock)).toEqual({
       usd: {
         currency: "usd",
+        precision: 2,
         exchangeRate: usd.exchangeRate
       },
       eur: {
         currency: "eur",
+        precision: 2,
         exchangeRate: eur.exchangeRate
       }
     });
@@ -31,6 +33,7 @@ describe("preprocessData", () => {
             countryCode: "AT",
             currency: "eur",
             countryName: "Austria",
+            precision: 2,
             exchangeRate: eur.exchangeRate
           },
           {
@@ -38,6 +41,7 @@ describe("preprocessData", () => {
             countryCode: "SK",
             currency: "eur",
             countryName: "Slovakia",
+            precision: 2,
             exchangeRate: eur.exchangeRate
           }
         ]

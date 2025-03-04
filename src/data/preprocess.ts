@@ -6,7 +6,7 @@ import type {Currency} from "./types";
 // The reason why we organize the data into the following structure
 // is to make lookups very fast. In the terminology of BigO notation it should O(1).
 
-type CurrencyRow = Pick<Currency, "exchangeRate" | "currency">;
+type CurrencyRow = Pick<Currency, "exchangeRate" | "currency" | "precision">;
 type CurrencyData = Record<string, CurrencyRow>;
 type CountriesData = Record<
   string,
@@ -18,9 +18,9 @@ type CountriesData = Record<
 >;
 
 const preprocessCurrency = (currencies: Currency[]) => {
-  return currencies.reduce((record, {currency, exchangeRate}) => {
+  return currencies.reduce((record, {currency, exchangeRate, precision}) => {
     currency = currency.toLocaleLowerCase();
-    record[currency] = {currency, exchangeRate};
+    record[currency] = {currency, exchangeRate, precision};
     return record;
   }, {} as CurrencyData);
 };

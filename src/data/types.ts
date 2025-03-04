@@ -8,7 +8,7 @@ type Rate = {
 
 type Currency = {
   currency: string;
-  precision: number;
+  precision?: number;
   nameI18N?: string;
   exchangeRate?: Rate;
   banknoteRate?: Rate;
