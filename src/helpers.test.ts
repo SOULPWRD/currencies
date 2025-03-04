@@ -7,7 +7,11 @@ describe("filterData", () => {
     expect(filterData(dataMock, "eur")).toEqual(dataMock["eur"]);
   });
 
-  it("filters data based on the non-existing search term", () => {
-    expect(filterData(dataMock, "xcd")).toEqual(Object.values(dataMock).flat());
+  it("returns an empty list when the search term does not match key", () => {
+    expect(filterData(dataMock, "a")).toEqual([]);
+  });
+
+  it("return all results when the search term is an empty string", () => {
+    expect(filterData(dataMock, "")).toEqual(Object.values(dataMock).flat());
   });
 });

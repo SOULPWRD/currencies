@@ -6,6 +6,7 @@ import {useState, useCallback} from "react";
 import {Header} from "./Header";
 import {Search} from "./Search";
 import {CurrenciesList} from "./CurrenciesList";
+import {NotFound} from "./NotFound";
 import {useDebounce} from "./hooks/debounce";
 import {filterData} from "./helpers";
 
@@ -42,7 +43,11 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
     <>
       <Header title="Goerge FE Test"></Header>
       <Search value={searchTerm} label="Search" onInput={onInput}></Search>
-      {findings ? <CurrenciesList currencies={findings} /> : null}
+      {findings.length ? (
+        <CurrenciesList currencies={findings} />
+      ) : (
+        <NotFound />
+      )}
     </>
   );
 };

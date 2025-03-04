@@ -1,7 +1,15 @@
 import type {CountriesData} from "./data/preprocess";
 
 const filterData = (data: CountriesData, searchTerm = "") => {
-  return data[searchTerm] || Object.values(data).flat();
+  if (searchTerm === "") {
+    return Object.values(data).flat();
+  }
+
+  if (data[searchTerm] === undefined) {
+    return [];
+  }
+
+  return data[searchTerm];
 };
 
 export {filterData};

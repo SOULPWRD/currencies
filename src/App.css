@@ -41,3 +41,8 @@ img {
 .row > p:last-of-type {
   margin-left: auto;
 }
+
+.not-found {
+  padding: 1em;
+  background-color: turquoise;
+}

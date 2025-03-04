@@ -12,6 +12,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const pushSearchTerm = (searchTerm: string) => {
+  const url = new URL(location.href);
+  url.searchParams.set("search", searchTerm);
+  history.replaceState({}, "", url);
+  return url;
+};
+
 export const Primary: Story = {
   args: {
     data: dataMock,
@@ -21,16 +28,20 @@ export const Primary: Story = {
   }
 };
 
-// setting a default state
-const url = new URL(location.href);
-url.searchParams.set("search", "eur");
-history.replaceState({}, "", url);
-
 export const WithSearchParams: Story = {
   args: {
     data: dataMock,
     history,
     searchKey: "search",
-    url
+    url: pushSearchTerm("eur")
+  }
+};
+
+export const WithNoFound: Story = {
+  args: {
+    data: dataMock,
+    history,
+    searchKey: "search",
+    url: pushSearchTerm("a")
   }
 };
