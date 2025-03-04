@@ -6,8 +6,7 @@ import {Search} from "./Search";
 const meta = {
   title: "Example/Search",
   component: Search,
-  tags: ["autodocs"],
-  args: {onInput: fn()}
+  tags: ["autodocs"]
 } satisfies Meta<typeof Search>;
 
 export default meta;
@@ -17,5 +16,13 @@ export const Primary: Story = {
   args: {
     label: "Search",
     onInput: fn()
+  }
+};
+
+export const InitialValue: Story = {
+  args: {
+    label: "Search",
+    onInput: fn(),
+    value: "EUR"
   }
 };

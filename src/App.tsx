@@ -25,11 +25,8 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
   const debounce = useDebounce<string>((searchTerm) => {
     const results = data[searchTerm.toUpperCase()];
     setFindings(results);
-    if (!results) {
-      return;
-    }
-    url.searchParams.set(searchKey, searchTerm.toUpperCase());
-    history.pushState({}, "", url);
+    url.searchParams.set(searchKey, searchTerm);
+    history.replaceState({}, "", url);
   }, 250);
 
   const onInput = useCallback(
@@ -42,7 +39,11 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
   return (
     <>
       <Header title="Goerge FE Test"></Header>
-      <Search label="Search" onInput={onInput}></Search>
+      <Search
+        value={searchTerm?.toLocaleLowerCase()}
+        label="Search"
+        onInput={onInput}
+      ></Search>
       {findings ? <CurrenciesList currencies={findings} /> : null}
     </>
   );

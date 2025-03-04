@@ -7,8 +7,8 @@ type Props = {
   onInput: (searchTerm: string) => void;
 };
 
-const Search: FC<Props> = ({onInput, label, value}) => {
-  const [inputValue, setValue] = useState(value);
+const Search: FC<Props> = ({onInput, label, value = ""}) => {
+  const [inputValue, setValue] = useState<string>(value);
   const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     const searchTerm = event.target.value;
     setValue(searchTerm);
