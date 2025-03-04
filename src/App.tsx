@@ -19,7 +19,9 @@ type Props = {
 
 const App: FC<Props> = ({data, history, searchKey, url}) => {
   const searchTerm = url.searchParams.get(searchKey)?.toUpperCase();
-  const [findings, setFindings] = useState<CurrencyProps[]>();
+  const [findings, setFindings] = useState<CurrencyProps[]>(
+    data[searchTerm as string]
+  );
   const debounce = useDebounce<string>((searchTerm) => {
     const results = data[searchTerm.toUpperCase()];
     setFindings(results);
@@ -29,14 +31,6 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
     url.searchParams.set(searchKey, searchTerm.toUpperCase());
     history.pushState({}, "", url);
   }, 250);
-
-  useEffect(() => {
-    if (!searchTerm) {
-      return;
-    }
-    const results = data[searchTerm];
-    setFindings(results);
-  }, [data, searchTerm]);
 
   const onInput = useCallback(
     (searchTerm: string) => {
