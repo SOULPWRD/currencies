@@ -7,6 +7,7 @@ import {Header} from "./Header";
 import {Search} from "./Search";
 import {CurrenciesList} from "./CurrenciesList";
 import {useDebounce} from "./hooks/debounce";
+import {filterData} from "./helpers";
 
 import "./App.css";
 
@@ -20,10 +21,10 @@ type Props = {
 const App: FC<Props> = ({data, history, searchKey, url}) => {
   const searchTerm = url.searchParams.get(searchKey)?.toUpperCase();
   const [findings, setFindings] = useState<CurrencyProps[]>(
-    data[searchTerm as string]
+    filterData(data, searchTerm as string)
   );
   const debounce = useDebounce<string>((searchTerm) => {
-    const results = data[searchTerm.toUpperCase()];
+    const results = filterData(data, searchTerm);
     setFindings(results);
     url.searchParams.set(searchKey, searchTerm);
     history.replaceState({}, "", url);
