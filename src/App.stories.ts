@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/react";
-import type {CountriesData} from "./data/preprocess";
+import {mockData} from "./stories/mocks";
 
 import {App} from "./App";
 
@@ -11,33 +11,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-const mockData: CountriesData = {
-  EUR: [
-    {
-      countryCode: "SK",
-      countryName: "Slovakia",
-      currency: "EUR",
-      exchangeRate: {
-        buy: 1,
-        indicator: 2,
-        lastModified: new Date().toISOString(),
-        middle: 1
-      }
-    },
-    {
-      countryCode: "ES",
-      countryName: "Spain",
-      currency: "EUR",
-      exchangeRate: {
-        buy: 1,
-        indicator: 2,
-        lastModified: new Date().toISOString(),
-        middle: 1
-      }
-    }
-  ]
-};
 
 export const Primary: Story = {
   args: {
