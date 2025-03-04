@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# Bank currencies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the George Front-End Team coding exercise.
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The app consists of components as stated in [the specification section](https://github.com/keriati/george-fx-test?tab=readme-ov-file#specification).
+The attached _fx.json_ [file](https://github.com/keriati/george-fx-test/blob/master/fx.json) has been used as an datasource. For countries manipulation and flags mapping the [countries-list](https://www.npmjs.com/package/countries-list) dependency has been used.
 
-## Expanding the ESLint configuration
+## Repository structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The repository is organized into three main sections - `.storybook`, `public`, `src`.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
-});
-```
+[/.storybook](https://github.com/SOULPWRD/currencies/tree/main/.storybook) is the the storybook setup folder
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+[/public](https://github.com/SOULPWRD/currencies/tree/main/public) is where are public assets resides
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+[/src](https://github.com/SOULPWRD/currencies/tree/main/src) is where the application code lives - all components and their corresponding stories files, utils, hooks and data.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules
-  }
-});
-```
+## Development
+
+- In order to run the dev server, run `npm run dev`.
+
+- In order to build the project, run `npm run build`.
+
+- In order to run unit tests and test coverage, run `npm run test` and `npm run test -- --coverage` respectively.
+
+## Storybook
+
+Every component can be find in the storybook. In order to see the components behaviour, please run `npm run storybook`.
+
+## Enjoy ;)
