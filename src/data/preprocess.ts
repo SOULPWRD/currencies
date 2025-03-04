@@ -15,10 +15,7 @@ const preprocessCurrency = (currencies: Currency[]) => {
   }, {} as CurrencyData);
 };
 
-const preprocessData = (
-  countries: TCountries,
-  currencies: Currency[]
-): CountriesData => {
+const preprocessData = (countries: TCountries, currencies: Currency[]) => {
   const preprocessedCurrencies = preprocessCurrency(currencies);
 
   return Object.entries(countries).reduce((acc, [key, value]) => {
