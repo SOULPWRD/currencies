@@ -5,7 +5,7 @@ This is the George Front-End Team coding exercise.
 ## Introduction
 
 The app consists of components as stated in [the specification section](https://github.com/keriati/george-fx-test?tab=readme-ov-file#specification).
-The attached _fx.json_ [file](https://github.com/keriati/george-fx-test/blob/master/fx.json) has been used as an datasource. For countries manipulation and flags mapping the [countries-list](https://www.npmjs.com/package/countries-list) dependency has been used.
+The attached _fx.json_ [file](https://github.com/keriati/george-fx-test/blob/master/fx.json) has been used as data source. For countries manipulation and flags mapping the [countries-list](https://www.npmjs.com/package/countries-list) dependency has been used.
 
 ## Repository structure
 
