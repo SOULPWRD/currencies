@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {Props as CurrencyProps} from "./CurrencyRow";
 import type {CountriesData} from "./data/preprocess";
 
-import {useState, useCallback, useEffect} from "react";
+import {useState, useCallback} from "react";
 import {Header} from "./Header";
 import {Search} from "./Search";
 import {CurrenciesList} from "./CurrenciesList";
@@ -49,4 +49,4 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
   );
 };
 
-export default App;
+export {App};

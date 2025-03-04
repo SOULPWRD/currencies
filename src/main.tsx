@@ -2,7 +2,7 @@ import {StrictMode} from "react";
 import {createRoot} from "react-dom/client";
 import {countries} from "countries-list";
 import "./index.css";
-import App from "./App.tsx";
+import {App} from "./App.tsx";
 import currencies from "./data/fx.json";
 import {preprocessData} from "./data/preprocess.ts";
 
