@@ -8,12 +8,12 @@ describe("preprocessCurrency", () => {
     const [usd, eur] = currenciesMock;
 
     expect(preprocessCurrency(currenciesMock)).toEqual({
-      USD: {
-        currency: "USD",
+      usd: {
+        currency: "usd",
         exchangeRate: usd.exchangeRate
       },
-      EUR: {
-        currency: "EUR",
+      eur: {
+        currency: "eur",
         exchangeRate: eur.exchangeRate
       }
     });
@@ -25,18 +25,18 @@ describe("preprocessData", () => {
     const eur = currenciesMock[1];
     expect(preprocessData(countriesMock as TCountries, currenciesMock)).toEqual(
       {
-        EUR: [
+        eur: [
           {
             id: expect.any(String),
             countryCode: "AT",
-            currency: "EUR",
+            currency: "eur",
             countryName: "Austria",
             exchangeRate: eur.exchangeRate
           },
           {
             id: expect.any(String),
             countryCode: "SK",
-            currency: "EUR",
+            currency: "eur",
             countryName: "Slovakia",
             exchangeRate: eur.exchangeRate
           }

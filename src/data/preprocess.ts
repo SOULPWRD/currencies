@@ -19,6 +19,7 @@ type CountriesData = Record<
 
 const preprocessCurrency = (currencies: Currency[]) => {
   return currencies.reduce((record, {currency, exchangeRate}) => {
+    currency = currency.toLocaleLowerCase();
     record[currency] = {currency, exchangeRate};
     return record;
   }, {} as CurrencyData);
@@ -31,6 +32,7 @@ const preprocessData = (countries: TCountries, currencies: Currency[]) => {
     const {currency} = value;
 
     currency.forEach((currency) => {
+      currency = currency.toLocaleLowerCase();
       if (acc[currency] === undefined) {
         acc[currency] = [];
       }

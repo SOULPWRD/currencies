@@ -19,11 +19,12 @@ type Props = {
 };
 
 const App: FC<Props> = ({data, history, searchKey, url}) => {
-  const searchTerm = url.searchParams.get(searchKey)?.toUpperCase();
+  const searchTerm = url.searchParams.get(searchKey)?.toLocaleLowerCase();
   const [findings, setFindings] = useState<CurrencyProps[]>(
-    filterData(data, searchTerm as string)
+    filterData(data, searchTerm)
   );
   const debounce = useDebounce<string>((searchTerm) => {
+    searchTerm = searchTerm.toLocaleLowerCase();
     const results = filterData(data, searchTerm);
     setFindings(results);
     url.searchParams.set(searchKey, searchTerm);
@@ -40,11 +41,7 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
   return (
     <>
       <Header title="Goerge FE Test"></Header>
-      <Search
-        value={searchTerm?.toLocaleLowerCase()}
-        label="Search"
-        onInput={onInput}
-      ></Search>
+      <Search value={searchTerm} label="Search" onInput={onInput}></Search>
       {findings ? <CurrenciesList currencies={findings} /> : null}
     </>
   );

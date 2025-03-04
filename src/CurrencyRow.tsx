@@ -20,7 +20,7 @@ const CurrencyRow: FC<Props> = ({
     <li className="row">
       <img src={`/flags/${countryCode?.toLowerCase()}.png`}></img>
       <p>{countryName || NA}</p>
-      <p>{currency || NA}</p>
+      <p>{currency?.toUpperCase() || NA}</p>
       <p>{exchangeRate?.buy || NA}</p>
     </li>
   );

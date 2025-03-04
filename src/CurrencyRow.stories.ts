@@ -16,7 +16,7 @@ export const Primary: Story = {
     id: "1",
     countryCode: "sk",
     countryName: "Slovakia",
-    currency: "EUR",
+    currency: "eur",
     exchangeRate: {
       buy: 1,
       indicator: 2,
@@ -30,6 +30,6 @@ export const NA: Story = {
   args: {
     id: "1",
     countryName: "Slovakia",
-    currency: "EUR"
+    currency: "eur"
   }
 };

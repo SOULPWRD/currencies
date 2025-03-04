@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    currencies: dataMock["EUR"]
+    currencies: dataMock["eur"]
   }
 };

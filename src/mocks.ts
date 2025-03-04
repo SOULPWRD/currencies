@@ -3,12 +3,12 @@ import type {Currency} from "./data/types";
 import {countries} from "countries-list";
 
 const dataMock: CountriesData = {
-  EUR: [
+  eur: [
     {
       id: crypto.randomUUID(),
       countryCode: "SK",
       countryName: "Slovakia",
-      currency: "EUR",
+      currency: "eur",
       exchangeRate: {
         buy: 1,
         indicator: 2,
@@ -20,7 +20,7 @@ const dataMock: CountriesData = {
       id: crypto.randomUUID(),
       countryCode: "ES",
       countryName: "Spain",
-      currency: "EUR",
+      currency: "eur",
       exchangeRate: {
         buy: 1,
         indicator: 2,
@@ -29,12 +29,12 @@ const dataMock: CountriesData = {
       }
     }
   ],
-  USD: [
+  usd: [
     {
       id: crypto.randomUUID(),
       countryCode: "US",
       countryName: "USA",
-      currency: "USD",
+      currency: "usd",
       exchangeRate: {
         buy: 1.18,
         indicator: 2,
@@ -47,7 +47,7 @@ const dataMock: CountriesData = {
 
 const currenciesMock: Currency[] = [
   {
-    currency: "USD",
+    currency: "usd",
     precision: 2,
     exchangeRate: {
       buy: 1.14,
@@ -57,7 +57,7 @@ const currenciesMock: Currency[] = [
     }
   },
   {
-    currency: "EUR",
+    currency: "eur",
     precision: 2,
     exchangeRate: {
       buy: 1,
