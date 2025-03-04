@@ -10,7 +10,7 @@ const CurrenciesList: FC<Props> = ({currencies}) => {
   return (
     <ul className="results">
       {currencies.map((currency) => (
-        <CurrencyRow key={currency.countryName} {...currency} />
+        <CurrencyRow key={`${currency.id}`} {...currency} />
       ))}
     </ul>
   );

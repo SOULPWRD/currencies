@@ -10,7 +10,11 @@ type CurrencyRow = Pick<Currency, "exchangeRate" | "currency">;
 type CurrencyData = Record<string, CurrencyRow>;
 type CountriesData = Record<
   string,
-  (CurrencyRow & {countryCode: TCountryCode; countryName: ICountry["name"]})[]
+  (CurrencyRow & {
+    id: string;
+    countryCode: TCountryCode;
+    countryName: ICountry["name"];
+  })[]
 >;
 
 const preprocessCurrency = (currencies: Currency[]) => {
@@ -33,6 +37,7 @@ const preprocessData = (countries: TCountries, currencies: Currency[]) => {
 
       acc[currency].push({
         ...preprocessedCurrencies[currency],
+        id: crypto.randomUUID(),
         countryName: value.name,
         countryCode: key as TCountryCode
       });

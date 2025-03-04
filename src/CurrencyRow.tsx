@@ -3,6 +3,7 @@ import type {Rate} from "./data/types";
 import {NA} from "./constants";
 
 type Props = {
+  id: string;
   exchangeRate?: Rate;
   countryCode?: string;
   countryName?: string;

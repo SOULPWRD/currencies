@@ -1,36 +1,7 @@
-import type {Currency} from "./types";
-
-import {countries, TCountries} from "countries-list";
+import {TCountries} from "countries-list";
 import {describe, it, expect} from "vitest";
 import {preprocessCurrency, preprocessData} from "./preprocess";
-
-const currenciesMock: Currency[] = [
-  {
-    currency: "USD",
-    precision: 2,
-    exchangeRate: {
-      buy: 1.14,
-      indicator: 0,
-      lastModified: new Date().toISOString(),
-      middle: 1
-    }
-  },
-  {
-    currency: "EUR",
-    precision: 2,
-    exchangeRate: {
-      buy: 1,
-      indicator: 0,
-      lastModified: new Date().toISOString(),
-      middle: 1
-    }
-  }
-];
-
-const countriesMock = {
-  AT: countries.AT,
-  SK: countries.SK
-};
+import {countriesMock, currenciesMock} from "../mocks";
 
 describe("preprocessCurrency", () => {
   it("preprocesses currency data", () => {
@@ -56,12 +27,14 @@ describe("preprocessData", () => {
       {
         EUR: [
           {
+            id: expect.any(String),
             countryCode: "AT",
             currency: "EUR",
             countryName: "Austria",
             exchangeRate: eur.exchangeRate
           },
           {
+            id: expect.any(String),
             countryCode: "SK",
             currency: "EUR",
             countryName: "Slovakia",
