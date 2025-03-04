@@ -50,7 +50,7 @@ describe("preprocessCurrency", () => {
 });
 
 describe("preprocessData", () => {
-  it("preprocessData", () => {
+  it("preprocesses into the map currencies", () => {
     const eur = currenciesMock[1];
     expect(preprocessData(countriesMock as TCountries, currenciesMock)).toEqual(
       {
