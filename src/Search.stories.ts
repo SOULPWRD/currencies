@@ -1,6 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/react";
 import {fn} from "@storybook/test";
-import "./App.css";
 
 import {Search} from "./Search";
 
