@@ -1,6 +1,11 @@
 import type {TCountries, ICountry, TCountryCode} from "countries-list";
 import type {Currency} from "./types";
 
+// The only task of these preprocessors is to get the data into format of a simple map.
+// So the data would be grouped by given currecies.
+// The reason why we organize the data into the following structure
+// is to make lookups very fast. In the terminology of BigO notation it should O(1).
+
 type CurrencyRow = Pick<Currency, "exchangeRate" | "currency">;
 type CurrencyData = Record<string, CurrencyRow>;
 type CountriesData = Record<
