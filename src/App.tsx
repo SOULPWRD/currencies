@@ -1,5 +1,4 @@
 import type {FC} from "react";
-import type {Props as CurrencyProps} from "./CurrencyRow";
 import type {CountriesData} from "./data/preprocess";
 
 import {useState, useCallback} from "react";
@@ -20,14 +19,10 @@ type Props = {
 };
 
 const App: FC<Props> = ({data, history, searchKey, url}) => {
-  const searchTerm = url.searchParams.get(searchKey)?.toLocaleLowerCase();
-  const [findings, setFindings] = useState<CurrencyProps[]>(
-    filterData(data, searchTerm)
-  );
+  const term = url.searchParams.get(searchKey)?.toLocaleLowerCase();
+  const [searchTerm, setSeachTerm] = useState<string | undefined>(term);
   const debounce = useDebounce<string>((searchTerm) => {
-    searchTerm = searchTerm.toLocaleLowerCase();
-    const results = filterData(data, searchTerm);
-    setFindings(results);
+    setSeachTerm(searchTerm);
     url.searchParams.set(searchKey, searchTerm);
     history.replaceState({}, "", url);
   }, 250);
@@ -39,10 +34,12 @@ const App: FC<Props> = ({data, history, searchKey, url}) => {
     [debounce]
   );
 
+  const findings = filterData(data, searchTerm);
+
   return (
     <>
       <Header title="Goerge FE Test"></Header>
-      <Search value={searchTerm} label="Search" onInput={onInput}></Search>
+      <Search value={term} label="Search" onInput={onInput}></Search>
       {findings.length ? (
         <CurrenciesList currencies={findings} />
       ) : (

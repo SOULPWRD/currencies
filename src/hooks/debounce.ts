@@ -1,13 +1,15 @@
-import {useCallback} from "react";
 import {debounce} from "../utils";
+import {useRef} from "react";
 
 const useDebounce = <T>(callback: (value: T) => void, miliseconds: number) => {
-  const fn = debounce<T>(callback, miliseconds, {
-    clearTimeout: window.clearInterval,
-    setTimeout: window.setTimeout
-  });
+  const ref = useRef<(value: T) => void>(
+    debounce<T>(callback, miliseconds, {
+      clearTimeout: window.clearInterval,
+      setTimeout: window.setTimeout
+    })
+  );
 
-  return useCallback((value: T) => fn(value), [fn]);
+  return ref.current;
 };
 
 export {useDebounce};

@@ -12,7 +12,7 @@ const Search: FC<Props> = ({onInput, label, value = ""}) => {
   const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     const searchTerm = event.target.value;
     setValue(searchTerm);
-    onInput(searchTerm);
+    onInput(searchTerm.toLowerCase());
   };
 
   return (
